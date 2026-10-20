@@ -1,5 +1,6 @@
 <?
 
+    session_start();
     require_once 'php/db.php';
 
     if($_POST['username'] and $_POST['password']){
@@ -9,8 +10,7 @@
         $md5_pass = md5($_POST['password'].'VLADZASOLIL');
 
         if($fetched[0][1] == $md5_pass){
-            session_start();
-            setcookie(session_name(),session_id(),time()+604800);
+            setcookie(session_name(),session_id(),time()+604800, '/');
             $_SESSION['logged'] = [$_POST['username'], $md5_pass];
 
             echo '<script>window.location.replace("/index.php");</script>';

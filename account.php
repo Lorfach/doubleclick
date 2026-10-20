@@ -1,4 +1,5 @@
 <?
+    session_start();
     require_once './php/db.php';
 
     $username = $_POST['username'];
@@ -16,8 +17,7 @@
 
                 mysqli_query($db, "INSERT INTO `accounts` (`login`, `password`) VALUES ('$username', '$md5_pass')");
 
-                session_start();
-                setcookie(session_name(),session_id(),time()+604800);
+                setcookie(session_name(),session_id(),time()+604800, '/');
 
                 $_SESSION['logged'] = [$username, $md5_pass];
 

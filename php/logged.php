@@ -1,6 +1,6 @@
 <?
     session_start();
-    setcookie(session_name(),session_id(),time()+604800);
+    setcookie(session_name(),session_id(),time()+604800, '/');
 
     if($_SESSION['logged']){
         require_once 'php/db.php';
